@@ -1,5 +1,5 @@
 // Package client (v2) is the current official Go client for InfluxDB.
-package client // import "github.com/influxdata/influxdb1-client/v2"
+package client // import "github.com/glados28/influxdb1-client/v2"
 
 import (
 	"bytes"
@@ -18,7 +18,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/influxdata/influxdb1-client/models"
+	"github.com/glados28/influxdb1-client/models"
 )
 
 type ContentEncoding string
@@ -557,7 +557,7 @@ func (c *client) Query(q Query) (*Response, error) {
 		return nil, err
 	}
 	defer func() {
-		io.Copy(ioutil.Discard, resp.Body) // https://github.com/influxdata/influxdb1-client/issues/58
+		io.Copy(ioutil.Discard, resp.Body) // https://github.com/glados28/influxdb1-client/issues/58
 		resp.Body.Close()
 	}()
 
