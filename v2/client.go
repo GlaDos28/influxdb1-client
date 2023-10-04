@@ -647,18 +647,18 @@ func checkResponse(resp *http.Response) error {
 		return fmt.Errorf("received status code %d from downstream server, with response body: %q", resp.StatusCode, body)
 	}
 
-	// If we get an unexpected content type, then it is also not from influx direct and therefore
-	// we want to know what we received and what status code was returned for debugging purposes.
-	if cType, _, _ := mime.ParseMediaType(resp.Header.Get("Content-Type")); cType != "application/json" {
-		// Read up to 1kb of the body to help identify downstream errors and limit the impact of things
-		// like downstream serving a large file
-		body, err := ioutil.ReadAll(io.LimitReader(resp.Body, 1024))
-		if err != nil || len(body) == 0 {
-			return fmt.Errorf("expected json response, got empty body, with status: %v", resp.StatusCode)
-		}
-
-		return fmt.Errorf("expected json response, got %q, with status: %v and response body: %q", cType, resp.StatusCode, body)
-	}
+//	// If we get an unexpected content type, then it is also not from influx direct and therefore
+//	// we want to know what we received and what status code was returned for debugging purposes.
+//	if cType, _, _ := mime.ParseMediaType(resp.Header.Get("Content-Type")); cType != "application/json" {
+//		// Read up to 1kb of the body to help identify downstream errors and limit the impact of things
+//		// like downstream serving a large file
+//		body, err := ioutil.ReadAll(io.LimitReader(resp.Body, 1024))
+//		if err != nil || len(body) == 0 {
+//			return fmt.Errorf("expected json response, got empty body, with status: %v", resp.StatusCode)
+//		}
+//
+//		return fmt.Errorf("expected json response, got %q, with status: %v and response body: %q", cType, resp.StatusCode, body)
+//	}
 	return nil
 }
 
