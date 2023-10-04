@@ -10,7 +10,6 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
-	"mime"
 	"net/http"
 	"net/url"
 	"path"
